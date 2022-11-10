@@ -7,6 +7,7 @@ import com.modsen.api.repository.EventRepository;
 import com.modsen.api.service.event.EventService;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -46,7 +47,7 @@ public class EventServiceImpl implements EventService {
   @Transactional
   public EventDto update(EventDto eventDto) {
     var id = eventDto.getId();
-    if (isExist(id)) {
+    if (Objects.nonNull(id) && isExist(id)) {
       var event = mapper.eventDtoToEvent(eventDto);
       repository.update(event);
       return mapper.eventToEventDto(event);
