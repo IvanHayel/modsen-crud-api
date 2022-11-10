@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 public enum EventsSortStrategy {
   DEFAULT("id"),
   THEME("theme"),
+  DESCRIPTION("description"),
   ORGANIZER("organizer"),
   START("start"),
   PLACE("place");

@@ -10,6 +10,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public enum EventsFilterStrategy {
   THEME("theme"),
+  DESCRIPTION("description"),
   ORGANIZER("organizer"),
   START("start"),
   PLACE("place");
