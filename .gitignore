@@ -30,3 +30,6 @@ hs_err_pid*
 build
 .gradle
 temp
+
+# Disable
+!gradle/wrapper/gradle-wrapper.jar
