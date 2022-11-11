@@ -114,7 +114,8 @@ git clone https://github.com/IvanHayel/modsen-crud-api.git
 * Create Postgres Database
 
 Example:
-```postgresql
+
+```sql
 CREATE DATABASE "modsen-api"
     WITH 
     OWNER = postgres
