@@ -25,6 +25,8 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class EventRepositoryImpl implements EventRepository {
+  private static final int FIRST_ARGUMENT = 0;
+
   SessionFactory sessionFactory;
 
   @Override
@@ -44,12 +46,12 @@ public class EventRepositoryImpl implements EventRepository {
       CriteriaQuery<Event> criteria,
       Root<Event> root) {
     if (parameters.containsKey(EventsSortStrategy.SORT_PARAMETER)) {
-      var sortParameter = parameters.get(EventsSortStrategy.SORT_PARAMETER)[0];
+      var sortParameter = parameters.get(EventsSortStrategy.SORT_PARAMETER)[FIRST_ARGUMENT];
       if (EventsSortStrategy.isExist(sortParameter)) {
         var direction =
             parameters.get(EventsSortDirection.DIRECTION_PARAMETER) == null
                 ? EventsSortDirection.DEFAULT.getDirection()
-                : parameters.get(EventsSortDirection.DIRECTION_PARAMETER)[0];
+                : parameters.get(EventsSortDirection.DIRECTION_PARAMETER)[FIRST_ARGUMENT];
         if (direction.equalsIgnoreCase(EventsSortDirection.DESC.getDirection())) {
           criteria.orderBy(builder.desc(root.get(sortParameter)));
         } else {
@@ -70,8 +72,8 @@ public class EventRepositoryImpl implements EventRepository {
             strategy -> {
               var parameter = strategy.getFilterParameter();
               if (parameters.containsKey(parameter)) {
-                var value = parameters.get(parameter)[0];
-                if (strategy.equals(EventsFilterStrategy.START)) {
+                var value = parameters.get(parameter)[FIRST_ARGUMENT];
+                if (strategy.isDateTimeStrategy()) {
                   predicates.add(builder.equal(root.get(parameter), ZonedDateTime.parse(value)));
                 } else {
                   predicates.add(builder.equal(root.get(parameter), value));

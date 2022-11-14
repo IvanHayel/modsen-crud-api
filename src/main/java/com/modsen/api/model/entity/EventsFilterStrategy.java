@@ -16,4 +16,8 @@ public enum EventsFilterStrategy {
   PLACE("place");
 
   String filterParameter;
+
+  public boolean isDateTimeStrategy() {
+    return this == START;
+  }
 }

@@ -15,11 +15,11 @@ public enum EventSearchFields {
   ORGANIZER("organizer"),
   PLACE("place");
 
-  String name;
+  String fieldName;
 
   public static String[] getAllNames() {
     return Arrays.stream(EventSearchFields.values())
-        .map(EventSearchFields::getName)
+        .map(EventSearchFields::getFieldName)
         .toArray(String[]::new);
   }
 }
