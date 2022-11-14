@@ -17,7 +17,7 @@ import org.hibernate.search.mapper.pojo.mapping.definition.annotation.GenericFie
 @MappedSuperclass
 @Getter
 @Setter
-@FieldDefaults(level = AccessLevel.PUBLIC)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public abstract class BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
