@@ -16,7 +16,7 @@ import org.springframework.lang.Nullable;
 @AllArgsConstructor
 @Getter
 @Setter
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class EventDto implements Serializable {
   @Nullable Long id;
   @NotNull @NotBlank String theme;
